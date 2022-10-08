@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Сосчитать количество отпускных</title>
+</head>
+<body>
+<h1>Расчет:</h1>
+<form action="#" th:action="@{/calculator}" th:object="${payment}" method="get">
+    <label for="avgIncome">Средний доход</label>
+    <input type="text" th:field="*{avgIncome}" id="avgIncome"/>
+    <div th:if="${#fields.hasErrors('avgIncome')}" th:errors="*{avgIncome}">Ошибка ввода средней зарплаты</div>
+
+    <label for="daysNum">Количество дней отпуска</label>
+    <input type="text" th:field="*{daysNum}" id="daysNum">
+    <div th:if="${#fields.hasErrors('daysNum')}" th:errors="*{daysNum}">Ошибка ввода дней отпуска</div>
+    <p>
+        <input type="submit" class="button" name="calculate" value="Расчитать">
+    </p>
+
+    <h1><p th:text="'Количество отпускных: ' + ${result}"/></h1>
+</form>
+
+
+
+</body>
+</html>

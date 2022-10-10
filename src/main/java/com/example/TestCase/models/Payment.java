@@ -1,18 +1,11 @@
 package com.example.TestCase.models;
 
 import org.hibernate.validator.constraints.Range;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
-
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-
+import java.util.Date;
 
 public class Payment {
 
@@ -24,7 +17,7 @@ public class Payment {
     @Min(value = 5, message = "Количество отпускных дней должно быть не меньше 5")
     private int daysNum;
 
-    private Calendar firstDay;
+    private String firstDay;
 
     public Payment() {
     }
@@ -34,17 +27,17 @@ public class Payment {
         this.daysNum = daysNum;
     }
 
-    public Payment(double avgIncome, int daysNum, Calendar firstDay) {
+    public Payment(double avgIncome, int daysNum, String firstDay) {
         this.avgIncome = avgIncome;
         this.daysNum = daysNum;
         this.firstDay = firstDay;
     }
 
-    public Calendar getFirstDay() {
+    public String getFirstDay() {
         return firstDay;
     }
 
-    public void setFirstDay(Calendar firstDay) {
+    public void setFirstDay(String firstDay) {
         this.firstDay = firstDay;
     }
 

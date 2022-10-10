@@ -31,12 +31,21 @@ public class PaymentController {
         return "payments/calculator";
     }
 
-    @GetMapping("/calculator")
+    @GetMapping(value = "/calculator", params = "calculate")
     public String calculate(@ModelAttribute("payment") @Valid Payment payment, BindingResult bindingResult,
                             Model model) {
         if (bindingResult.hasErrors())
             return "payments/calculator";
         model.addAttribute("result", paymentService.calculate(payment));
+        return "payments/calculator";
+    }
+
+    @GetMapping(value = "/calculator", params = "calculateWithDate")
+    public String calculateWithDate(@ModelAttribute("payment") @Valid Payment payment, BindingResult bindingResult,
+                            Model model) {
+        if (bindingResult.hasErrors())
+            return "payments/calculator";
+        model.addAttribute("result", paymentService.calculateWithDate(payment));
         return "payments/calculator";
     }
 

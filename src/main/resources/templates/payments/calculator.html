@@ -14,8 +14,12 @@
     <label for="daysNum">Количество дней отпуска</label>
     <input type="text" th:field="*{daysNum}" id="daysNum">
     <div th:if="${#fields.hasErrors('daysNum')}" th:errors="*{daysNum}">Ошибка ввода дней отпуска</div>
+
+    <label for="firstDay">Первый день отпуска</label>
+    <input th:type="date" th:field="*{firstDay}" id="firstDay">
     <p>
         <input type="submit" class="button" name="calculate" value="Расчитать">
+        <input type="submit" class="button" name="calculateWithDate" value="Расчитать с датой">
     </p>
 
     <h1><p th:text="'Количество отпускных: ' + ${result}"/></h1>

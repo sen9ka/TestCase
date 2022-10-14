@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Расчет:</h1>
-<form action="#" th:action="@{/calculator}" th:object="${payment}" method="get">
+<form action="#" th:action="@{/calculate}" th:object="${payment}" method="get">
     <label for="avgIncome">Средний доход</label>
     <input type="text" th:field="*{avgIncome}" id="avgIncome"/>
     <div th:if="${#fields.hasErrors('avgIncome')}" th:errors="*{avgIncome}">Ошибка ввода средней зарплаты</div>

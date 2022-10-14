@@ -15,15 +15,16 @@ import static java.time.DayOfWeek.*;
 @Service
 public class PaymentService {
 
-    private double vacationPay (double income, int days) {
+    public static double vacationPay (double income, int days) {
         return ((income / 29.3) * days);
     }
 
-    public double calculate(Payment payment) {
+    public static double calculate(Payment payment) {
         return vacationPay(payment.getAvgIncome(), payment.getDaysNum());
     }
 
-    public int paidDays (String firstDayDate, int days) {
+
+    public static int paidDays (String firstDayDate, int days) {
         LocalDate firstDay = LocalDate.parse(firstDayDate);
         LocalDate endDate = firstDay.plusDays(days);
         final Set<Integer> holidays = Set.of(
@@ -40,7 +41,7 @@ public class PaymentService {
         return paidDates.size();
     }
 
-    public double calculateWithDate(Payment payment) {
+    public static double calculateWithDate(Payment payment) {
         return vacationPay(payment.getAvgIncome(), paidDays(payment.getFirstDay(), payment.getDaysNum()));
     }
 

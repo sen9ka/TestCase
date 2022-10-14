@@ -28,25 +28,25 @@ public class PaymentController {
     @GetMapping()
     public String showCalculatorPage(Model model, Payment payment) {
         model.addAttribute("payment", payment);
-        return "payments/calculator";
+        return "payments/calculate";
     }
 
-    @GetMapping(value = "/calculator", params = "calculate")
+    @GetMapping(value = "/calculate", params = "calculate")
     public String calculate(@ModelAttribute("payment") @Valid Payment payment, BindingResult bindingResult,
                             Model model) {
         if (bindingResult.hasErrors())
-            return "payments/calculator";
+            return "payments/calculate";
         model.addAttribute("result", paymentService.calculate(payment));
-        return "payments/calculator";
+        return "payments/calculate";
     }
 
-    @GetMapping(value = "/calculator", params = "calculateWithDate")
+    @GetMapping(value = "/calculate", params = "calculateWithDate")
     public String calculateWithDate(@ModelAttribute("payment") @Valid Payment payment, BindingResult bindingResult,
                             Model model) {
         if (bindingResult.hasErrors())
-            return "payments/calculator";
+            return "payments/calculate";
         model.addAttribute("result", paymentService.calculateWithDate(payment));
-        return "payments/calculator";
+        return "payments/calculate";
     }
 
 }

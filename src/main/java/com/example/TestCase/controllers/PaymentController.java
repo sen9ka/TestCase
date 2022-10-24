@@ -18,11 +18,8 @@ import java.util.Calendar;
 @RequestMapping("/")
 public class PaymentController {
 
-    private final PaymentService paymentService;
-
     @Autowired
     public PaymentController(PaymentService paymentService) {
-        this.paymentService = paymentService;
     }
 
     @GetMapping()
@@ -31,21 +28,12 @@ public class PaymentController {
         return "payments/calculate";
     }
 
-    @GetMapping(value = "/calculate", params = "calculate")
+    @GetMapping(value = "/calculate")
     public String calculate(@ModelAttribute("payment") @Valid Payment payment, BindingResult bindingResult,
                             Model model) {
         if (bindingResult.hasErrors())
             return "payments/calculate";
-        model.addAttribute("result", paymentService.calculate(payment));
-        return "payments/calculate";
-    }
-
-    @GetMapping(value = "/calculate", params = "calculateWithDate")
-    public String calculateWithDate(@ModelAttribute("payment") @Valid Payment payment, BindingResult bindingResult,
-                            Model model) {
-        if (bindingResult.hasErrors())
-            return "payments/calculate";
-        model.addAttribute("result", paymentService.calculateWithDate(payment));
+        model.addAttribute("result", PaymentService.calculation(payment));
         return "payments/calculate";
     }
 

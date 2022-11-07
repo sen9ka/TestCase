@@ -45,11 +45,11 @@ public class PaymentService {
         return vacationPay(payment.getAvgIncome(), paidDays(payment.getFirstDay(), payment.getDaysNum()));
     }
 
-    public static double calculation(Payment payment) {
+    public static float calculation(Payment payment) {
         if (payment.getFirstDay().isEmpty()) {
-            return calculate(payment);
+            return (int) calculate(payment);
         } else {
-            return calculateWithDate(payment);
+            return (int) calculateWithDate(payment);
         }
     }
 

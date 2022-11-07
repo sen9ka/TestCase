@@ -18,10 +18,6 @@ import java.util.Calendar;
 @RequestMapping("/")
 public class PaymentController {
 
-    @Autowired
-    public PaymentController(PaymentService paymentService) {
-    }
-
     @GetMapping()
     public String showCalculatorPage(Model model, Payment payment) {
         model.addAttribute("payment", payment);

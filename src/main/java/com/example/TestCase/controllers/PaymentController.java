@@ -18,7 +18,6 @@ import java.util.Calendar;
 @RequestMapping("/")
 public class PaymentController {
 
-
     @GetMapping()
     public String showCalculatorPage(Model model, Payment payment) {
         model.addAttribute("payment", payment);
